@@ -7,5 +7,7 @@ if response.status_code == 200:
     content = response.content
     data = json.loads(content.decode())
 
-    print(data)
-    print(type(data))
+    user = {
+        "fullname": data['results'][0]['name']['first'] + " " + data['results'][0]['name']['last']
+    }
+    print(user)
