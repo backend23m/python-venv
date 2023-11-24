@@ -1,41 +1,31 @@
 import requests
 import json
-from pprint import pprint
 
-
-def get_randomuser() -> dict:
-    response = requests.get('https://randomuser.me/api/')
-    
-    if response.status_code == 200:
-        content = response.content
-        data = json.loads(content.decode())
-    
-        randomuser = data['results'][0]
-    
-        user = {
-            "fullname": randomuser['name']['first'] + " " + randomuser['name']['last'],
-            "email": randomuser['email'],
-            "phone": randomuser['phone']
-        }
-    
-    return user
-
-def get_randomusers(n: int) -> list:
-    users = []
-    for i in range(n):
-        user = get_randomuser()
-        users.append(user)
-
-    result = {
-        "users": users,
-        "info": {"count": n}
+def get_user():
+    response=requests.get("https://randomuser.me/api/")
+    if response.status_code==200:
+        content=response.content
+        data=json.loads(content.decode())
+        randomuser=data["results"][0]
+        return randomuser
+      
+def get_users(gender,n):
+    a=[]
+   
+    while len(a)<n:
+        user=get_user()
+        if user["gender"]==gender:
+            a.append(user)
+    users={
+        "users":a,
+        "info":{"count":n}
     }
-    return result
+    return users
+  
+def write_data(dic):
+    with open ("users.json", "w") as s:
+        data=json.dumps(dic, indent=4)
+        s.write(data)
 
-def write_data(result: dict):
-    with open('users.json', 'w') as f:
-        data = json.dumps(result, indent=4)
-        f.write(data)
-
-result = get_randomusers(30)
-write_data(result)
+data=get_users("male", 20)
+write_data(data)
