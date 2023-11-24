@@ -1,5 +1,6 @@
 import requests
 import json
+
 def get_user():
     response=requests.get("https://randomuser.me/api/")
     if response.status_code==200:
@@ -7,6 +8,7 @@ def get_user():
         data=json.loads(content.decode())
         randomuser=data["results"][0]
         return randomuser
+      
 def get_users(gender,n):
     a=[]
    
@@ -19,6 +21,7 @@ def get_users(gender,n):
         "info":{"count":n}
     }
     return users
+  
 def write_data(dic):
     with open ("users.json", "w") as s:
         data=json.dumps(dic, indent=4)
