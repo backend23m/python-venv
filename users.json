@@ -1,0 +1,25 @@
+{
+    "users": [
+        {
+            "fullname": "Name: Ms Sofie Eikrem",
+            "number": "Number: 39891701",
+            "email": "email: sofie.eikrem@example.com"
+        },
+        {
+            "fullname": "Name: Mrs \u0633\u0627\u0631\u0627 \u062c\u0639\u0641\u0631\u06cc",
+            "number": "Number: 044-57044755",
+            "email": "email: sr.jaafry@example.com"
+        },
+        {
+            "fullname": "Name: Ms Emilia Hamalainen",
+            "number": "Number: 09-312-855",
+            "email": "email: emilia.hamalainen@example.com"
+        },
+        {
+            "fullname": "Name: Ms Ella Pulli",
+            "number": "Number: 08-394-635",
+            "email": "email: ella.pulli@example.com"
+        }
+    ],
+    "info": 4
+}
